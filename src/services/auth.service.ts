@@ -1,4 +1,4 @@
-// src/services/auth.service.ts
+
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { prisma } from '../config/prisma';
@@ -16,7 +16,7 @@ export async function login(dados: LoginInput) {
   });
 
   
-  if (!usuario || (usuario.tipo !== 'veterinario' && usuario.tipo !== 'recepcionista')) {
+  if (!usuario || (usuario.tipo !== 'VETERINARIO' && usuario.tipo !== 'RECEPCIONISTA')) {
     throw new AppError('E-mail ou senha inválidos.', 401);
   }
 

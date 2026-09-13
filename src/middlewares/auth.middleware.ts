@@ -8,8 +8,8 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET || "segredo");
     (req as any).user = decoded;
-    next();
+    return next();
   } catch {
-    res.status(401).json({ error: "Token inválido" });
+    return res.status(401).json({ error: "Token inválido" });
   }
 };

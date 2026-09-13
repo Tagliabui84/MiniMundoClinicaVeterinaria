@@ -16,7 +16,6 @@ const SELECT_CLIENTE_PUBLICO = {
   cpf: true,
   email: true,
   telefone: true,
-  criadoEm: true, 
 } as const;
 
 export async function criarCliente(dados: CriarClienteInput) {

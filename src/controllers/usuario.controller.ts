@@ -12,7 +12,8 @@ export const registrarUsuario = async (req: Request, res: Response) => {
     const usuario = await prisma.usuario.create({
       data: { nome, email, senha: hash, tipo },
     });
-    res.json(usuario);
+    const { senha: _senha, ...usuarioSemSenha } = usuario;
+    res.json(usuarioSemSenha);
   } catch {
     res.status(400).json({ error: "Erro ao registrar usuário" });
   }
@@ -33,4 +34,5 @@ export const loginUsuario = async (req: Request, res: Response) => {
   );
 
   res.json({ token });
+  return;
 };
