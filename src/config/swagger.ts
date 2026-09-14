@@ -1,14 +1,5 @@
 import swaggerJSDoc from "swagger-jsdoc";
 
-/**
- * Configuração central do Swagger (OpenAPI 3.0) para a API da
- * Clínica Veterinária.
- *
- * O swagger-jsdoc lê os comentários "/** @swagger ... *​/" espalhados
- * nos arquivos de rotas (veja src/routes/*.ts) e monta o documento
- * OpenAPI a partir deles + das definições fixas declaradas aqui
- * (info, servers, securitySchemes e schemas reutilizáveis).
- */
 const swaggerDefinition: Record<string, any> = {
   openapi: "3.0.0",
   info: {
