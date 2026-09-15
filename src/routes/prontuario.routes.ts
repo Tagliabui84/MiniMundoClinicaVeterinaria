@@ -26,7 +26,7 @@ const router = Router();
  *             schema:
  *               $ref: '#/components/schemas/Prontuario'
  *       400:
- *         description: Dados inválidos (ex.: consultaId inexistente ou já possui prontuário)
+ *         description: Dados inválidos (exemplo -  consultaId inexistente ou já possui prontuário)
  *         content:
  *           application/json:
  *             schema:

@@ -26,7 +26,7 @@ const consultaRoutes = Router();
  *             schema:
  *               $ref: '#/components/schemas/Consulta'
  *       400:
- *         description: Dados inválidos (ex.: animalId/veterinarioId inexistentes)
+ *         description: Dados inválidos (exemplo -  animalId/veterinarioId inexistentes)
  *         content:
  *           application/json:
  *             schema:

@@ -1,6 +1,6 @@
-import swaggerJSDoc from "swagger-jsdoc";
+import swaggerJSDoc, { SwaggerDefinition } from "swagger-jsdoc";
 
-const swaggerDefinition: Record<string, any> = {
+const swaggerDefinition: SwaggerDefinition = {
   openapi: "3.0.0",
   info: {
     title: "API - Mini Mundo Clínica Veterinária",

@@ -26,7 +26,7 @@ const veterinarioRoutes = Router();
  *             schema:
  *               $ref: '#/components/schemas/Veterinario'
  *       400:
- *         description: Dados inválidos (ex.: usuarioId ou CRMV/e-mail já usados)
+ *         description: Dados inválidos (exemplo -  usuarioId ou CRMV/e-mail já usados)
  *         content:
  *           application/json:
  *             schema:

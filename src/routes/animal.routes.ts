@@ -26,7 +26,7 @@ const animalRoutes = Router();
  *             schema:
  *               $ref: '#/components/schemas/Animal'
  *       400:
- *         description: Dados inválidos (ex.: clienteId inexistente)
+ *         description: Dados inválidos (exemplo -  clienteId inexistente)
  *         content:
  *           application/json:
  *             schema:
