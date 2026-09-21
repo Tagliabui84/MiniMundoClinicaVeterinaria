@@ -210,6 +210,6 @@ const swaggerDefinition: SwaggerDefinition = {
 
 export const swaggerSpec = swaggerJSDoc({
   definition: swaggerDefinition,
-  // Onde procurar os comentários "@swagger" que descrevem cada rota
+ 
   apis: ["./src/routes/*.ts", "./dist/routes/*.js"],
 });
