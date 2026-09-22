@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
+    "build": "prisma migrate deploy && tsc",
     "postinstall": "prisma generate",
     "vercel-build": "prisma generate && prisma migrate",
     "start": "node dist/server.js",
