@@ -6,6 +6,11 @@ import { prisma } from '../src/config/prisma';
 async function main() {
 
     console.log('Iniciando o seed da base de dados Clinica Veterinaria....');
+    const categoriasExistentes = await prisma.usuario.count();
+  if (categoriasExistentes > 0) {
+    console.log('Banco já populado anteriormente. Nada a fazer.');
+    return;
+  }
     
     const senhaCriptografada = await bcrypt.hash('senha123456789', 10);
 
