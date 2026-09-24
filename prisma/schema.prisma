@@ -23,6 +23,8 @@ model Cliente {
   cpf       String   @unique
   email     String   @unique
   telefone  String
+  endereco  String?   // <-- campo novo adicionado
+  criadoEm  DateTime  @default(now()  )
   animais   Animal[]
 }
 

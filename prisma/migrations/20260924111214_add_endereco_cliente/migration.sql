@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Cliente" ADD COLUMN     "criadoEm" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "endereco" TEXT;
+
