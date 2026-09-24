@@ -1,6 +1,4 @@
-import swaggerJSDoc from "swagger-jsdoc";
 import type { SwaggerDefinition } from "swagger-jsdoc";
-
 
 const swaggerDefinition: SwaggerDefinition = {
   openapi: "3.0.0",
@@ -14,13 +12,13 @@ const swaggerDefinition: SwaggerDefinition = {
   },
   servers: [
     {
+      url: "https://mini-mundo-clinica-veterinaria.vercel.app",
+      description: "Servidor de produção (Vercel)",
+    },
+    {
       url: "http://localhost:{port}",
       description: "Servidor local de desenvolvimento",
-      variables: {
-        port: {
-          default: "3333",
-        },
-      },
+      variables: { port: { default: "3333" } },
     },
   ],
   tags: [
@@ -208,10 +206,149 @@ const swaggerDefinition: SwaggerDefinition = {
       },
     },
   },
+  // ✅ AQUI: paths definidos manualmente para funcionar em produção
+  paths: {
+    "/": {
+      get: {
+        summary: "Mensagem de boas-vindas",
+        tags: ["Usuários"],
+        responses: { 200: { description: "API no ar" } },
+      },
+    },
+    "/usuarios/registrar": {
+      post: {
+        summary: "Registra um novo usuário",
+        tags: ["Usuários"],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": { schema: { $ref: "#/components/schemas/NovoUsuario" } },
+          },
+        },
+        responses: { 200: { description: "Usuário criado" } },
+      },
+    },
+    "/usuarios/login": {
+      post: {
+        summary: "Autentica um usuário e retorna um token JWT",
+        tags: ["Usuários"],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": { schema: { $ref: "#/components/schemas/LoginInput" } },
+          },
+        },
+        responses: {
+          200: {
+            description: "Login realizado",
+            content: {
+              "application/json": { schema: { $ref: "#/components/schemas/LoginResposta" } },
+            },
+          },
+        },
+      },
+    },
+    "/clientes": {
+      get: {
+        summary: "Lista todos os clientes",
+        tags: ["Clientes"],
+        security: [{ bearerAuth: [] }],
+        responses: { 200: { description: "Lista de clientes" } },
+      },
+      post: {
+        summary: "Cadastra um novo cliente",
+        tags: ["Clientes"],
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": { schema: { $ref: "#/components/schemas/NovoCliente" } },
+          },
+        },
+        responses: { 200: { description: "Cliente criado" } },
+      },
+    },
+    "/animais": {
+      get: {
+        summary: "Lista todos os animais",
+        tags: ["Animais"],
+        security: [{ bearerAuth: [] }],
+        responses: { 200: { description: "Lista de animais" } },
+      },
+      post: {
+        summary: "Cadastra um novo animal",
+        tags: ["Animais"],
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": { schema: { $ref: "#/components/schemas/NovoAnimal" } },
+          },
+        },
+        responses: { 200: { description: "Animal criado" } },
+      },
+    },
+    "/veterinarios": {
+      get: {
+        summary: "Lista todos os veterinários",
+        tags: ["Veterinários"],
+        security: [{ bearerAuth: [] }],
+        responses: { 200: { description: "Lista de veterinários" } },
+      },
+      post: {
+        summary: "Cadastra um novo veterinário",
+        tags: ["Veterinários"],
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": { schema: { $ref: "#/components/schemas/NovoVeterinario" } },
+          },
+        },
+        responses: { 200: { description: "Veterinário criado" } },
+      },
+    },
+    "/consultas": {
+      get: {
+        summary: "Lista todas as consultas",
+        tags: ["Consultas"],
+        security: [{ bearerAuth: [] }],
+        responses: { 200: { description: "Lista de consultas" } },
+      },
+      post: {
+        summary: "Agenda uma nova consulta",
+        tags: ["Consultas"],
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": { schema: { $ref: "#/components/schemas/NovaConsulta" } },
+          },
+        },
+        responses: { 200: { description: "Consulta criada" } },
+      },
+    },
+    "/prontuarios": {
+      get: {
+        summary: "Lista todos os prontuários",
+        tags: ["Prontuários"],
+        security: [{ bearerAuth: [] }],
+        responses: { 200: { description: "Lista de prontuários" } },
+      },
+      post: {
+        summary: "Cria um novo prontuário",
+        tags: ["Prontuários"],
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": { schema: { $ref: "#/components/schemas/NovoProntuario" } },
+          },
+        },
+        responses: { 200: { description: "Prontuário criado" } },
+      },
+    },
+  },
 };
 
-export const swaggerSpec = swaggerJSDoc({
-  definition: swaggerDefinition,
- 
-  apis: ["./src/routes/*.ts", "./dist/routes/*.js"],
-});
+export const swaggerSpec = swaggerDefinition;
