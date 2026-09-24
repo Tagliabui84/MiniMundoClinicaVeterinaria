@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.json({mensagem: "Mini Mundo Clinica Veterinaria API está no ar!"});
+    res.json({mensagem: "VetCare API está no ar!"});
 });
 
 app.get("/api-docs/swagger.json", (req, res) => res.json(swaggerSpec));
