@@ -21,7 +21,12 @@ app.get("/", (req, res) => {
 
 app.get("/api-docs/swagger.json", (req, res) => res.json(swaggerSpec));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
-  swaggerOptions: { url: "/api-docs/swagger.json" }
+  swaggerOptions: { url: "/api-docs/swagger.json" },
+  customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui.min.css",
+  customJs: [
+    "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui-bundle.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui-standalone-preset.js"
+  ]
 }));
 
 
